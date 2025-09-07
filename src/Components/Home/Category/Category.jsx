@@ -8,10 +8,12 @@ import img2 from "../../../Assets/home/slide2.jpg";
 import img3 from "../../../Assets/home/slide3.jpg";
 import img4 from "../../../Assets/home/slide4.jpg";
 import img5 from "../../../Assets/home/slide5.jpg";
+import SectionTitle from '../../SectionTitle';
 
 const Category = () => {
     return (
         <div className='max-w-7xl mx-auto my-12'>
+            <SectionTitle heading={"ORDER ONLINE"} subHeading={"---From 11:00am to 10:00pm---"} />
             <Swiper
                 slidesPerView={3}
                 spaceBetween={30}
