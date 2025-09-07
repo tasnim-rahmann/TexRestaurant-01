@@ -31,7 +31,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="bg-black text-white text-center text-sm lg:text-lg font-medium p-2">
-                <p>Copyright © Text Restaurant. All rights reserved.</p>
+                <p>Copyright © {new Date().getFullYear()} Text Restaurant. All rights reserved.</p>
             </div>
         </div>
     );
