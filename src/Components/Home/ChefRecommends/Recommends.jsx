@@ -1,5 +1,5 @@
 import SectionTitle from "../../Shared/SectionTitle";
-import SingleCard from "./SingleCard";
+import SingleCard from "../../Shared/SingleCard";
 
 const Recommends = () => {
     const recommends = [
