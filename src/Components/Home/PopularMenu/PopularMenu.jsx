@@ -18,8 +18,8 @@ const PopularMenu = () => {
         <div className="max-w-7xl mx-auto my-12">
             <SectionTitle heading={"FROM OUR MENU"} subHeading={"---Check it out---"} />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-                {menuItems.map((item, idx) => (
-                    <SingleMenu key={idx} name={item.name} recipe={item.recipe} price={item.price} />
+                {menuItems.map((item) => (
+                    <SingleMenu key={item._id} name={item.name} recipe={item.recipe} price={item.price} image={item.image} />
                 ))}
             </div>
         </div>
