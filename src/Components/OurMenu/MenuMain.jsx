@@ -4,21 +4,28 @@ import SectionTitle from "../Shared/SectionTitle";
 import TodaysOffer from "./TodaysOffer";
 import img2 from "../../Assets/home/chef-service.jpg";
 import Service from "./Sevice";
+import useMenu from "../../Hooks/useMenu";
 
 const OurMenu = () => {
+    const { menuItems } = useMenu();
+    const dessert = menuItems.filter(item => item.category === 'dessert');
+    const soup = menuItems.filter(item => item.category === 'soup');
+    const salad = menuItems.filter(item => item.category === 'salad');
+    const pizza = menuItems.filter(item => item.category === 'pizza');
+    const offered = menuItems.filter(item => item.category === 'offered');
     return (
         <div>
             <Cover image={img1} heading={"OUR MENU"} subHeading={"Would you like to try a dish?"} />
             <SectionTitle heading={"TODAY'S OFFER"} subHeading={"---Don't miss---"} />
-            <TodaysOffer />
+            <TodaysOffer items={offered} />
             <Service img={img2} heading={"DESSERTS"} description={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."} />
-            <TodaysOffer />
+            <TodaysOffer items={dessert} />
             <Service img={img2} heading={"PIZZA"} description={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."} />
-            <TodaysOffer />
+            <TodaysOffer items={pizza} />
             <Service img={img2} heading={"SALADS"} description={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."} />
-            <TodaysOffer />
+            <TodaysOffer items={salad} />
             <Service img={img2} heading={"SOUPS"} description={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."} />
-            <TodaysOffer />
+            <TodaysOffer items={soup} />
         </div>
     );
 };
