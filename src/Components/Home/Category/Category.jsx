@@ -8,7 +8,7 @@ import img2 from "../../../Assets/home/slide2.jpg";
 import img3 from "../../../Assets/home/slide3.jpg";
 import img4 from "../../../Assets/home/slide4.jpg";
 import img5 from "../../../Assets/home/slide5.jpg";
-import SectionTitle from '../../SectionTitle';
+import SectionTitle from '../../Shared/SectionTitle';
 
 const Category = () => {
     return (

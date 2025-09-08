@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
-import SectionTitle from "../../Shared/SectionTitle";
-import SingleMenu from "../../Shared/SingleMenu";
-import PrimaryButton from "../../Shared/PrimaryButton";
+import React, { useEffect, useState } from 'react';
+import PrimaryButton from '../Shared/PrimaryButton';
+import SingleMenu from '../Shared/SingleMenu';
 
-const PopularMenu = () => {
+const TodaysOffer = () => {
     const [menuItems, setMenuItems] = useState([]);
 
     useEffect(() => {
@@ -17,17 +16,16 @@ const PopularMenu = () => {
 
     return (
         <div className="max-w-7xl mx-auto my-12">
-            <SectionTitle heading={"FROM OUR MENU"} subHeading={"---Check it out---"} />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
                 {menuItems.map((item) => (
                     <SingleMenu key={item._id} name={item.name} recipe={item.recipe} price={item.price} image={item.image} />
                 ))}
             </div>
             <div className="text-center mt-6">
-                <PrimaryButton titile={"View Full  Menu"} />
+                <PrimaryButton titile={"ORDER YOUR FAVOURITE FOOD"} />
             </div>
         </div>
     );
 };
 
-export default PopularMenu;
+export default TodaysOffer;

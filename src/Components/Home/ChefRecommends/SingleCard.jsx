@@ -1,4 +1,4 @@
-import AddToCartButton from "../../AddToCartButton";
+import AddToCartButton from "../../Shared/AddToCartButton";
 
 const SingleCard = ({ name, recipe, image, idx }) => {
     return (

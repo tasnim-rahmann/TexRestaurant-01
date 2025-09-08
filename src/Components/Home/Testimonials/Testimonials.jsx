@@ -1,6 +1,6 @@
 import 'swiper/css';
 import 'swiper/css/navigation';
-import SectionTitle from "../../SectionTitle";
+import SectionTitle from "../../Shared/SectionTitle";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { useEffect, useState } from 'react';

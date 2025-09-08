@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
+import { Link } from "react-router";
 
 const NavBar = () => {
     const [isPorfileOpen, setIsProfileOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <div className="fixed top-0 left-0 w-full z-50 shadow text-white backdrop-brightness-80">
@@ -13,10 +15,10 @@ const NavBar = () => {
                 </div>
                 <div className="hidden lg:block">
                     <ul className="flex items-center gap-7 font-medium">
-                        <li className="hover:text-gray-400 cursor-pointer transition-all duration-100">HOME</li>
+                        <Link to="/"><li className="hover:text-gray-400 cursor-pointer transition-all duration-100">HOME</li></Link>
                         <li className="hover:text-gray-400 cursor-pointer transition-all duration-100">CONTACT US</li>
                         <li className="hover:text-gray-400 cursor-pointer transition-all duration-100">DASHBOARD</li>
-                        <li className="hover:text-gray-400 cursor-pointer transition-all duration-100">OUR MENU</li>
+                        <Link to="/ourmenu"><li className="hover:text-gray-400 cursor-pointer transition-all duration-100">OUR MENU</li></Link>
                         <li className="hover:text-gray-400 cursor-pointer transition-all duration-100">OUR SHOP</li>
                         <li className="hover:text-gray-400 cursor-pointer transition-all duration-100">
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -35,7 +37,21 @@ const NavBar = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="lg:hidden">
+                <div className={`${isOpen ? "block" : "hidden"} lg:hidden absolute right-0 top-12 w-full`}>
+                    <ul className="flex flex-col gap-2 bg-gray-800 text-sm p-2">
+                        <Link to="/"><li className=" cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>HOME</li></Link>
+                        <li className="cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>CONTACT US</li>
+                        <li className="cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>DASHBOARD</li>
+                        <Link to="/ourmenu"><li className="hover:text-gray-400 cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>OUR MENU</li></Link>
+                        <li className="cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>OUR SHOP</li>
+                        <li className="cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>PROFILE</li>
+                        <li className="cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>SIGN OUT</li>
+                    </ul>
+                </div>
+                <div
+                    className="lg:hidden"
+                    onClick={() => setIsOpen(!isOpen)}
+                >
                     <HiOutlineMenuAlt3 size={25} />
                 </div>
             </div>

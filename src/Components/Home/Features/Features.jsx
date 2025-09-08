@@ -1,6 +1,6 @@
 import img1 from "../../../Assets/home/featured.jpg";
-import PrimaryButton from "../../PrimaryButton";
-import SectionTitle from "../../SectionTitle";
+import PrimaryButton from "../../Shared/PrimaryButton";
+import SectionTitle from "../../Shared/SectionTitle";
 
 const Features = () => {
     return (
