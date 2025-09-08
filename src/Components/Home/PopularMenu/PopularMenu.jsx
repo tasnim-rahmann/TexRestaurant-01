@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SectionTitle from "../../SectionTitle";
 import SingleMenu from "../../SingleMenu";
+import PrimaryButton from "../../PrimaryButton";
 
 const PopularMenu = () => {
     const [menuItems, setMenuItems] = useState([]);
@@ -21,6 +22,9 @@ const PopularMenu = () => {
                 {menuItems.map((item) => (
                     <SingleMenu key={item._id} name={item.name} recipe={item.recipe} price={item.price} image={item.image} />
                 ))}
+            </div>
+            <div className="text-center mt-6">
+                <PrimaryButton titile={"View Full  Menu"} />
             </div>
         </div>
     );
