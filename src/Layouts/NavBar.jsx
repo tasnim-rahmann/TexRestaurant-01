@@ -32,6 +32,7 @@ const NavBar = () => {
                     </ul>
                     <div className={`absolute right-6 top-15 bg-gray-100 rounded-sm text-black ${isPorfileOpen ? "block" : "hidden"}`}>
                         <ul>
+                            <Link to="/login"><li className="px-4 py-1 hover:bg-gray-200 cursor-pointer" onClick={() => setIsProfileOpen(false)}>Login</li></Link>
                             <li className="px-4 py-1 hover:bg-gray-200 cursor-pointer" onClick={() => setIsProfileOpen(false)}>Profile</li>
                             <li className="px-4 py-1 hover:bg-gray-200 cursor-pointer" onClick={() => setIsProfileOpen(false)}>Sign Out</li>
                         </ul>
@@ -45,6 +46,7 @@ const NavBar = () => {
                         <Link to="/ourmenu"><li className="hover:text-gray-400 cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>OUR MENU</li></Link>
                         <Link to="/ourshop"><li className="hover:text-gray-400 cursor-pointer transition-all duration-100">OUR SHOP</li></Link>
                         <li className="cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>PROFILE</li>
+                        <Link to="/login"><li className="px-4 py-1 hover:bg-gray-200 cursor-pointer" onClick={() => setIsProfileOpen(false)}>Login</li></Link>
                         <li className="cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>SIGN OUT</li>
                     </ul>
                 </div>
