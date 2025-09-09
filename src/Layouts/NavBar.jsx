@@ -1,11 +1,24 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router"; // ✅ add useNavigate
+import { AuthContext } from "../Providers/AuthContext";
 
 const NavBar = () => {
     const [isPorfileOpen, setIsProfileOpen] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const { user, logOut } = useContext(AuthContext);
+    const navigate = useNavigate(); // ✅ hook for redirect
+
+    const forDouble = () => {
+        setIsOpen(false); // close mobile menu
+        setIsProfileOpen(false); // close profile dropdown
+        logOut()
+            .then(() => {
+                navigate("/login"); // ✅ redirect to login
+            })
+            .catch(err => console.error(err));
+    };
 
     return (
         <div className="fixed top-0 left-0 w-full z-50 shadow text-white backdrop-brightness-80">
@@ -23,7 +36,9 @@ const NavBar = () => {
                         <li className="hover:text-gray-400 cursor-pointer transition-all duration-100">
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                                 <div className="indicator">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /> </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
                                     <span className="badge badge-sm indicator-item">8</span>
                                 </div>
                             </div>
@@ -32,9 +47,19 @@ const NavBar = () => {
                     </ul>
                     <div className={`absolute right-6 top-15 bg-gray-100 rounded-sm text-black ${isPorfileOpen ? "block" : "hidden"}`}>
                         <ul>
-                            <Link to="/register"><li className="px-4 py-1 hover:bg-gray-200 cursor-pointer" onClick={() => setIsProfileOpen(false)}>Sign Up</li></Link>
-                            <Link to="/login"><li className="px-4 py-1 hover:bg-gray-200 cursor-pointer" onClick={() => setIsProfileOpen(false)}>Sign In</li></Link>
-                            <li className="px-4 py-1 hover:bg-gray-200 cursor-pointer" onClick={() => setIsProfileOpen(false)}>Sign Out</li>
+                            {
+                                user ? (
+                                    <>
+                                        <li className="px-4 py-1 hover:bg-gray-200 cursor-pointer">Profile</li>
+                                        <li className="px-4 py-1 hover:bg-gray-200 cursor-pointer" onClick={forDouble}>Sign Out</li>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Link to="/register"><li className="px-4 py-1 hover:bg-gray-200 cursor-pointer" onClick={() => setIsProfileOpen(false)}>Sign Up</li></Link>
+                                        <Link to="/login"><li className="px-4 py-1 hover:bg-gray-200 cursor-pointer" onClick={() => setIsProfileOpen(false)}>Sign In</li></Link>
+                                    </>
+                                )
+                            }
                         </ul>
                     </div>
                 </div>
@@ -45,9 +70,15 @@ const NavBar = () => {
                         <li className="cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>DASHBOARD</li>
                         <Link to="/ourmenu"><li className="hover:text-gray-400 cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>OUR MENU</li></Link>
                         <Link to="/ourshop"><li className="hover:text-gray-400 cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>OUR SHOP</li></Link>
-                        <Link to="/register"><li className="hover:bg-gray-200 cursor-pointer" onClick={() => setIsOpen(false)}>SIGN UP</li></Link>
-                        <Link to="/login"><li className="hover:bg-gray-200 cursor-pointer" onClick={() => setIsOpen(false)}>SIGN IN</li></Link>
-                        <li className="cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>SIGN OUT</li>
+
+                        {user ? (
+                            <li className="cursor-pointer transition-all duration-100" onClick={forDouble}>SIGN OUT</li>
+                        ) : (
+                            <>
+                                <Link to="/register"><li className="hover:bg-gray-200 cursor-pointer" onClick={() => setIsOpen(false)}>SIGN UP</li></Link>
+                                <Link to="/login"><li className="hover:bg-gray-200 cursor-pointer" onClick={() => setIsOpen(false)}>SIGN IN</li></Link>
+                            </>
+                        )}
                     </ul>
                 </div>
                 <div

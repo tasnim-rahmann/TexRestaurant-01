@@ -3,10 +3,20 @@ import img1 from "../Assets/others/authentication.png";
 import img2 from "../Assets/others/authentication2.png";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthContext";
 
-const Login = () => {
+const SignUp = () => {
+    const { createUser } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, } = useForm();
     const onSubmit = data => {
+        if (data.password === data.confirm_password) {
+            createUser(data.email, data.password)
+                .then(result => {
+                    const loggedUser = result.user;
+                    console.log(loggedUser);
+                });
+        }
         console.log(data);
     };
 
@@ -83,4 +93,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignUp;

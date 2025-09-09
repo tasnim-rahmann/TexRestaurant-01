@@ -3,12 +3,13 @@ import img1 from "../Assets/others/authentication.png";
 import img2 from "../Assets/others/authentication1.png";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthContext";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
     const [captchaInput, setCaptchaInput] = useState("");
     const { signIn } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -26,6 +27,8 @@ const Login = () => {
                     const user = result.user;
                     console.log(user);
                 });
+            form.reset();
+            navigate("/");
         } else {
             alert("Invalid captcha, please try again");
         }
