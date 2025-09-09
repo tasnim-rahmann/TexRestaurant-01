@@ -5,9 +5,13 @@ import 'react-tabs/style/react-tabs.css';
 import { useState } from "react";
 import useMenu from "../../Hooks/useMenu";
 import SingleCard from "../Shared/SingleCard";
+import { useParams } from "react-router";
 
 const ShopMain = () => {
-    const [tabIdx, setTabIdx] = useState(0);
+    const categories = ['salad', 'pizza', 'soup', 'dessert', 'drinks'];
+    const { category } = useParams();
+    const initialIdx = categories.indexOf(category);
+    const [tabIdx, setTabIdx] = useState(initialIdx);
     const { menuItems } = useMenu();
     const dessert = menuItems.filter(item => item.category === 'dessert');
     const soup = menuItems.filter(item => item.category === 'soup');
@@ -23,40 +27,40 @@ const ShopMain = () => {
                 onSelect={(index) => setTabIdx(index)}
                 className="max-w-7xl mx-auto my-12"
             >
-                <TabList className="flex justify-center gap-6 border-gray-300">
+                <TabList className="flex justify-start md:justify-center border-gray-300 overflow-x-auto whitespace-nowrap scrollbar-hide px-2">
                     <Tab
-                        className="px-6 py-2 cursor-pointer text-lg font-semibold border-b-2 border-transparent 
-                        hover:text-[#BB8506] hover:border-[#BB8506] transition"
+                        className="px-6 py-2 cursor-pointer text-lg font-semibold
+                        hover:text-[#BB8506]"
                         selectedClassName="text-[#BB8506] border-b-2 border-[#BB8506]"
                     >
                         SALAD
                     </Tab>
 
                     <Tab
-                        className="px-6 py-2 cursor-pointer text-lg font-semibold border-b-2 border-transparent 
-                        hover:text-[#BB8506] hover:border-[#BB8506] transition"
+                        className="px-6 py-2 cursor-pointer text-lg font-semibold
+                        hover:text-[#BB8506]"
                         selectedClassName="text-[#BB8506] border-b-2 border-[#BB8506]"
                     >
                         PIZZA
                     </Tab>
 
                     <Tab
-                        className="px-6 py-2 cursor-pointer text-lg font-semibold border-b-2 border-transparent 
-                        hover:text-[#BB8506] hover:border-[#BB8506] transition"
+                        className="px-6 py-2 cursor-pointer text-lg font-semibold
+                        hover:text-[#BB8506]"
                         selectedClassName="text-[#BB8506] border-b-2 border-[#BB8506]"
                     >
                         SOUP
                     </Tab>
                     <Tab
-                        className="px-6 py-2 cursor-pointer text-lg font-semibold border-b-2 border-transparent 
-                        hover:text-[#BB8506] hover:border-[#BB8506] transition"
+                        className="px-6 py-2 cursor-pointer text-lg font-semibold 
+                        hover:text-[#BB8506]"
                         selectedClassName="text-[#BB8506] border-b-2 border-[#BB8506]"
                     >
                         DESERT
                     </Tab>
                     <Tab
-                        className="px-6 py-2 cursor-pointer text-lg font-semibold border-b-2 border-transparent 
-                        hover:text-[#BB8506] hover:border-[#BB8506] transition"
+                        className="px-6 py-2 cursor-pointer text-lg font-semibold 
+                        hover:text-[#BB8506]"
                         selectedClassName="text-[#BB8506] border-b-2 border-[#BB8506]"
                     >
                         DRINKS
@@ -65,16 +69,16 @@ const ShopMain = () => {
 
 
                 <TabPanel>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 p-2">
                         {salad.map((item, idx) => (
-                            <div key={item._id} className="bg-card-bg rounded-sm shadow">
+                            <div key={item._id} className="bg-card-bg h-full rounded-sm shadow">
                                 <SingleCard name={item.name} idx={idx} image={item.image} recipe={item.recipe} />
                             </div>
                         ))}
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 p-2">
                         {pizza.map((item, idx) => (
                             <div key={item._id} className="bg-card-bg rounded-sm shadow">
                                 <SingleCard name={item.name} idx={idx} image={item.image} recipe={item.recipe} />
@@ -83,7 +87,7 @@ const ShopMain = () => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 p-2">
                         {soup.map((item, idx) => (
                             <div key={item._id} className="bg-card-bg rounded-sm shadow">
                                 <SingleCard name={item.name} idx={idx} image={item.image} recipe={item.recipe} />
@@ -92,7 +96,7 @@ const ShopMain = () => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 p-2">
                         {dessert.map((item, idx) => (
                             <div key={item._id} className="bg-card-bg rounded-sm shadow">
                                 <SingleCard name={item.name} idx={idx} image={item.image} recipe={item.recipe} />
@@ -101,7 +105,7 @@ const ShopMain = () => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 p-2">
                         {drinks.map((item, idx) => (
                             <div key={item._id} className="bg-card-bg rounded-sm shadow">
                                 <SingleCard name={item.name} idx={idx} image={item.image} recipe={item.recipe} />

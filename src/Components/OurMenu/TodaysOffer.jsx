@@ -1,7 +1,8 @@
+import { Link } from 'react-router';
 import PrimaryButton from '../Shared/PrimaryButton';
 import SingleMenu from '../Shared/SingleMenu';
 
-const TodaysOffer = ({ items }) => {
+const TodaysOffer = ({ items, title }) => {
 
     return (
         <div className="max-w-7xl mx-auto my-12">
@@ -11,7 +12,7 @@ const TodaysOffer = ({ items }) => {
                 ))}
             </div>
             <div className="text-center mt-6">
-                <PrimaryButton titile={"ORDER YOUR FAVOURITE FOOD"} />
+                <Link to={`/ourshop/${title || "salad"}`}><PrimaryButton titile={"ORDER YOUR FAVOURITE FOOD"} /></Link>
             </div>
         </div>
     );

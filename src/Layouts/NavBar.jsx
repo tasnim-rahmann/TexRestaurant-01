@@ -19,7 +19,7 @@ const NavBar = () => {
                         <li className="hover:text-gray-400 cursor-pointer transition-all duration-100">CONTACT US</li>
                         <li className="hover:text-gray-400 cursor-pointer transition-all duration-100">DASHBOARD</li>
                         <Link to="/ourmenu"><li className="hover:text-gray-400 cursor-pointer transition-all duration-100">OUR MENU</li></Link>
-                        <Link to="/ourshop"><li className="hover:text-gray-400 cursor-pointer transition-all duration-100">OUR SHOP</li></Link>
+                        <Link to="/ourshop/salad/"><li className="hover:text-gray-400 cursor-pointer transition-all duration-100">OUR SHOP</li></Link>
                         <li className="hover:text-gray-400 cursor-pointer transition-all duration-100">
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                                 <div className="indicator">

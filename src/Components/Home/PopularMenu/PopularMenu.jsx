@@ -2,6 +2,7 @@ import SectionTitle from "../../Shared/SectionTitle";
 import SingleMenu from "../../Shared/SingleMenu";
 import PrimaryButton from "../../Shared/PrimaryButton";
 import useMenu from "../../../Hooks/useMenu";
+import { Link } from "react-router";
 
 const PopularMenu = () => {
     const { menuItems } = useMenu();
@@ -17,7 +18,7 @@ const PopularMenu = () => {
                 ))}
             </div>
             <div className="text-center mt-6">
-                <PrimaryButton titile={"View Full  Menu"} />
+                <Link to="/ourshop"><PrimaryButton titile={"View Full  Menu"} /></Link>
             </div>
         </div>
     );
