@@ -32,8 +32,8 @@ const NavBar = () => {
                     </ul>
                     <div className={`absolute right-6 top-15 bg-gray-100 rounded-sm text-black ${isPorfileOpen ? "block" : "hidden"}`}>
                         <ul>
-                            <Link to="/login"><li className="px-4 py-1 hover:bg-gray-200 cursor-pointer" onClick={() => setIsProfileOpen(false)}>Login</li></Link>
-                            <li className="px-4 py-1 hover:bg-gray-200 cursor-pointer" onClick={() => setIsProfileOpen(false)}>Profile</li>
+                            <Link to="/register"><li className="px-4 py-1 hover:bg-gray-200 cursor-pointer" onClick={() => setIsProfileOpen(false)}>Sign Up</li></Link>
+                            <Link to="/login"><li className="px-4 py-1 hover:bg-gray-200 cursor-pointer" onClick={() => setIsProfileOpen(false)}>Sign In</li></Link>
                             <li className="px-4 py-1 hover:bg-gray-200 cursor-pointer" onClick={() => setIsProfileOpen(false)}>Sign Out</li>
                         </ul>
                     </div>
@@ -44,9 +44,9 @@ const NavBar = () => {
                         <li className="cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>CONTACT US</li>
                         <li className="cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>DASHBOARD</li>
                         <Link to="/ourmenu"><li className="hover:text-gray-400 cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>OUR MENU</li></Link>
-                        <Link to="/ourshop"><li className="hover:text-gray-400 cursor-pointer transition-all duration-100">OUR SHOP</li></Link>
-                        <li className="cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>PROFILE</li>
-                        <Link to="/login"><li className="px-4 py-1 hover:bg-gray-200 cursor-pointer" onClick={() => setIsProfileOpen(false)}>Login</li></Link>
+                        <Link to="/ourshop"><li className="hover:text-gray-400 cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>OUR SHOP</li></Link>
+                        <Link to="/register"><li className="hover:bg-gray-200 cursor-pointer" onClick={() => setIsOpen(false)}>SIGN UP</li></Link>
+                        <Link to="/login"><li className="hover:bg-gray-200 cursor-pointer" onClick={() => setIsOpen(false)}>SIGN IN</li></Link>
                         <li className="cursor-pointer transition-all duration-100" onClick={() => setIsOpen(false)}>SIGN OUT</li>
                     </ul>
                 </div>

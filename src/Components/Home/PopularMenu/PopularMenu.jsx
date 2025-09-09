@@ -18,7 +18,7 @@ const PopularMenu = () => {
                 ))}
             </div>
             <div className="text-center mt-6">
-                <Link to="/ourshop"><PrimaryButton titile={"View Full  Menu"} /></Link>
+                <Link to="/ourshop/salad"><PrimaryButton titile={"View Full  Menu"} /></Link>
             </div>
         </div>
     );

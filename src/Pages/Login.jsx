@@ -1,10 +1,14 @@
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from "react-simple-captcha";
 import img1 from "../Assets/others/authentication.png";
 import img2 from "../Assets/others/authentication1.png";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Providers/AuthContext";
+import { Link } from "react-router";
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
     const [captchaInput, setCaptchaInput] = useState("");
+    const { signIn } = useContext(AuthContext);
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -17,7 +21,11 @@ const Login = () => {
         const password = form.password.value;
 
         if (validateCaptcha(captchaInput) === true) {
-            console.log(email, password);
+            signIn(email, password)
+                .then(result => {
+                    const user = result.user;
+                    console.log(user);
+                });
         } else {
             alert("Invalid captcha, please try again");
         }
@@ -76,6 +84,15 @@ const Login = () => {
                             </button>
                         </fieldset>
                     </form>
+                    <div className="text-center">
+                        <Link className="link link-hover text-[#D1A054]" to="/register">New here? Create a New Account</Link>
+                        <div>
+                            <p className="mt-2 text-sm font-medium">Or sign in with</p>
+                            <p className="items-center justify-center mt-2 border-1 inline-block p-2 rounded-full cursor-pointer hover:bg-gray-200 transition-all duration-150">
+                                <FaGoogle />
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
