@@ -6,22 +6,45 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthContext";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const SignUp = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, googleSignIn } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, } = useForm();
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
 
     const onSubmit = data => {
         if (data.password === data.confirm_password) {
             createUser(data.email, data.password)
-                .then(result => {
-                    const loggedUser = result.user;
-                    Swal.fire("Profile Created!");
-                    navigate("/");
-                    console.log(loggedUser);
+                .then(() => {
+                    const userInfo = {
+                        name: data.name,
+                        email: data.email
+                    };
+                    axiosPublic.post('/users', userInfo)
+                        .then((res) => {
+                            if (res.data.insertedId) {
+                                Swal.fire("Profile Created!");
+                                navigate("/");
+                            }
+                        });
                 });
         }
+    };
+
+    const signInWithGoogle = () => {
+        googleSignIn()
+            .then((result) => {
+                const userInfo = {
+                    email: result.user?.email,
+                    name: result.user?.displayName
+                };
+                axiosPublic.post('/users', userInfo)
+                    .then(() => {
+                        navigate("/");
+                    });
+            });
     };
 
     return (
@@ -93,7 +116,10 @@ const SignUp = () => {
                     <div className="text-center">
                         <Link className="link link-hover text-[#D1A054]" to="/login">Already registered? Go to log in</Link>
                         <p className="mt-2 font-medium text-sm">Or sign up with</p>
-                        <p className="items-center justify-center mt-2 border-1 inline-block p-2 rounded-full cursor-pointer hover:bg-gray-200 transition-all duration-150">
+                        <p
+                            className="items-center justify-center mt-2 border-1 inline-block p-2 rounded-full cursor-pointer hover:bg-gray-200 transition-all duration-150"
+                            onClick={signInWithGoogle}
+                        >
                             <FaGoogle />
                         </p>
                     </div>

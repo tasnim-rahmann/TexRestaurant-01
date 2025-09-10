@@ -6,13 +6,15 @@ import { AuthContext } from "../Providers/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router";
 import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const Login = () => {
     const [captchaInput, setCaptchaInput] = useState("");
-    const { signIn } = useContext(AuthContext);
+    const { signIn, googleSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
+    const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -36,6 +38,20 @@ const Login = () => {
         } else {
             alert("Invalid captcha, please try again");
         }
+    };
+
+    const signInWithGoogle = () => {
+        googleSignIn()
+            .then((result) => {
+                const userInfo = {
+                    email: result.user?.email,
+                    name: result.user?.displayName
+                };
+                axiosPublic.post('/users', userInfo)
+                    .then(() => {
+                        navigate("/");
+                    });
+            });
     };
 
     return (
@@ -95,7 +111,7 @@ const Login = () => {
                         <Link className="link link-hover text-[#D1A054]" to="/register">New here? Create a New Account</Link>
                         <div>
                             <p className="mt-2 text-sm font-medium">Or sign in with</p>
-                            <p className="items-center justify-center mt-2 border-1 inline-block p-2 rounded-full cursor-pointer hover:bg-gray-200 transition-all duration-150">
+                            <p className="items-center justify-center mt-2 border-1 inline-block p-2 rounded-full cursor-pointer hover:bg-gray-200 transition-all duration-150" onClick={signInWithGoogle}>
                                 <FaGoogle />
                             </p>
                         </div>

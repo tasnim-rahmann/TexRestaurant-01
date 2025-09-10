@@ -9,6 +9,7 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import Dashboard from "../Pages/Dashboard";
 import Cart from "../Pages/Cart";
 import Review from "../Pages/Review";
+import PrivateRoute from "./PrivateRoute";
 
 const AppRoutes = () => {
     return (
@@ -24,12 +25,18 @@ const AppRoutes = () => {
             </Route>
 
             {/* Protected dashboard routes */}
-            <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route
+                path="/dashboard"
+                element={
+                    <PrivateRoute>
+                        <DashboardLayout />
+                    </PrivateRoute>
+                }
+            >
                 <Route index element={<Dashboard />} />
-                <Route path="/dashboard/cart" element={<Cart />} />
-                <Route path="/dashboard/review" element={<Review />} />
+                <Route path="cart" element={<Cart />} />
+                <Route path="review" element={<Review />} />
             </Route>
-
         </Routes>
     );
 };
