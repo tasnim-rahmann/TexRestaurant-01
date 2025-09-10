@@ -72,7 +72,7 @@ const ShopMain = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 p-2">
                         {salad.map((item, idx) => (
                             <div key={item._id} className="bg-card-bg h-full rounded-sm shadow">
-                                <SingleCard name={item.name} idx={idx} image={item.image} recipe={item.recipe} />
+                                <SingleCard name={item.name} idx={idx} image={item.image} recipe={item.recipe} item={item} />
                             </div>
                         ))}
                     </div>
@@ -81,7 +81,7 @@ const ShopMain = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 p-2">
                         {pizza.map((item, idx) => (
                             <div key={item._id} className="bg-card-bg rounded-sm shadow">
-                                <SingleCard name={item.name} idx={idx} image={item.image} recipe={item.recipe} />
+                                <SingleCard name={item.name} idx={idx} image={item.image} recipe={item.recipe} item={item} />
                             </div>
                         ))}
                     </div>
@@ -90,7 +90,7 @@ const ShopMain = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 p-2">
                         {soup.map((item, idx) => (
                             <div key={item._id} className="bg-card-bg rounded-sm shadow">
-                                <SingleCard name={item.name} idx={idx} image={item.image} recipe={item.recipe} />
+                                <SingleCard name={item.name} idx={idx} image={item.image} recipe={item.recipe} item={item} />
                             </div>
                         ))}
                     </div>
@@ -99,7 +99,7 @@ const ShopMain = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 p-2">
                         {dessert.map((item, idx) => (
                             <div key={item._id} className="bg-card-bg rounded-sm shadow">
-                                <SingleCard name={item.name} idx={idx} image={item.image} recipe={item.recipe} />
+                                <SingleCard name={item.name} idx={idx} image={item.image} recipe={item.recipe} item={item} />
                             </div>
                         ))}
                     </div>
@@ -108,7 +108,7 @@ const ShopMain = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 p-2">
                         {drinks.map((item, idx) => (
                             <div key={item._id} className="bg-card-bg rounded-sm shadow">
-                                <SingleCard name={item.name} idx={idx} image={item.image} recipe={item.recipe} />
+                                <SingleCard name={item.name} idx={idx} image={item.image} recipe={item.recipe} item={item} />
                             </div>
                         ))}
                     </div>

@@ -35,7 +35,7 @@ const Recommends = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
                 {recommends.map((item, idx) => (
-                    <SingleCard key={item._id} name={item.name} recipe={item.recipe} image={item.image} idx={idx} />
+                    <SingleCard key={item._id} name={item.name} recipe={item.recipe} image={item.image} idx={idx} item={item} />
                 ))}
             </div>
         </div>

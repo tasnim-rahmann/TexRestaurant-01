@@ -5,10 +5,14 @@ import OurMenu from "../Pages/OurMenu";
 import OurShop from "../Pages/OurShop";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
+import PrivateRoute from "./PrivateRoute";
+import DashboardLayout from "../Layouts/DashboardLayout";
+import Dashboard from "../Pages/Dashboard";
 
 const AppRoutes = () => {
     return (
         <Routes>
+            {/* Public routes */}
             <Route element={<MainLayout />}>
                 <Route path="/" element={<Home />} />
                 <Route path="/ourmenu" element={<OurMenu />} />
@@ -17,6 +21,12 @@ const AppRoutes = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<SignUp />} />
             </Route>
+
+            {/* Protected dashboard routes */}
+            <Route path="/dashboard" element={<DashboardLayout />}>
+                <Route index element={<Dashboard />} />
+            </Route>
+
         </Routes>
     );
 };

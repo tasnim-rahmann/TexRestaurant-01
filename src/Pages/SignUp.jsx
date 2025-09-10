@@ -1,23 +1,27 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import img1 from "../Assets/others/authentication.png";
 import img2 from "../Assets/others/authentication2.png";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthContext";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
     const { createUser } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, } = useForm();
+    const navigate = useNavigate();
+
     const onSubmit = data => {
         if (data.password === data.confirm_password) {
             createUser(data.email, data.password)
                 .then(result => {
                     const loggedUser = result.user;
+                    Swal.fire("Profile Created!");
+                    navigate("/");
                     console.log(loggedUser);
                 });
         }
-        console.log(data);
     };
 
     return (
@@ -48,6 +52,15 @@ const SignUp = () => {
                                 {...register("email", { required: true })}
                             />
                             {errors.email && <span className="text-warning">This Field is Required</span>}
+
+                            <label className="label text-black font-medium">Photo URL</label>
+                            <input
+                                type="text"
+                                name="photoURL"
+                                className="input w-full h-14 focus:outline-0"
+                                placeholder="Photo URL"
+                                {...register("photoURL")}
+                            />
 
                             <label className="label text-black font-medium mt-2">Password</label>
                             <input

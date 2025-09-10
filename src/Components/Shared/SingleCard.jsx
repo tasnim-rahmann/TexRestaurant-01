@@ -1,6 +1,6 @@
 import AddToCartButton from "../Shared/AddToCartButton";
 
-const SingleCard = ({ name, recipe, image, idx }) => {
+const SingleCard = ({ name, recipe, image, idx, item }) => {
     return (
         <div className="text-center bg-gray-100 h-full space-y-2 flex flex-col justify-between">
             <div>
@@ -8,7 +8,7 @@ const SingleCard = ({ name, recipe, image, idx }) => {
                 <h1 className="text-2xl font-semibold mt-4">{name}</h1>
                 <p className="max-w-3/4 mx-auto text-sm text-[#151515]">{recipe}</p>
             </div>
-            <AddToCartButton idx={idx} />
+            <AddToCartButton idx={idx} item={item} />
         </div>
     );
 };
