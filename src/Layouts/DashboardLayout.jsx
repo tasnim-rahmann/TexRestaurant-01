@@ -36,7 +36,7 @@ const DashboardLayout = () => {
                     </button>
                 </div>
 
-                <main className="p-6 flex-1 overflow-auto">
+                <main className="flex-1 overflow-auto">
                     <Outlet />
                 </main>
             </div>

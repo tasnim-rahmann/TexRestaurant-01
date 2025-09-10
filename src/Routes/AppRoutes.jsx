@@ -5,9 +5,10 @@ import OurMenu from "../Pages/OurMenu";
 import OurShop from "../Pages/OurShop";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
-import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import Dashboard from "../Pages/Dashboard";
+import Cart from "../Pages/Cart";
+import Review from "../Pages/Review";
 
 const AppRoutes = () => {
     return (
@@ -25,6 +26,8 @@ const AppRoutes = () => {
             {/* Protected dashboard routes */}
             <Route path="/dashboard" element={<DashboardLayout />}>
                 <Route index element={<Dashboard />} />
+                <Route path="/dashboard/cart" element={<Cart />} />
+                <Route path="/dashboard/review" element={<Review />} />
             </Route>
 
         </Routes>

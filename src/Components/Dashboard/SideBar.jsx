@@ -1,7 +1,8 @@
-import { FaBook, FaFileContract, FaHome, FaList, FaUser } from "react-icons/fa";
+import { FaBook, FaFileContract, FaHome, FaList, FaShoppingCart, FaUser } from "react-icons/fa";
 import { Link, NavLink } from "react-router";
 import { ImSpoonKnife } from "react-icons/im";
 import { FaShop } from "react-icons/fa6";
+import { VscPreview } from "react-icons/vsc";
 
 const SideBar = () => {
     const adminMenuItems = [
@@ -9,25 +10,28 @@ const SideBar = () => {
         { to: "/dashboard/add", icon: ImSpoonKnife, label: "Add Items" },
         { to: "/dashboard/manage", icon: FaList, label: "Manage Items" },
         { to: "/dashboard/bookings", icon: FaBook, label: "Manage bookings" },
-        { to: "/dashboard/users", icon: FaUser, label: "all users" },
+        { to: "/dashboard/users", icon: FaUser, label: "All Users" },
+        { to: "/dashboard/cart", icon: FaShoppingCart, label: "My Cart" },
+        { to: "/dashboard/review", icon: VscPreview, label: "Review" },
     ];
 
     return (
-        <aside className="w-64 bg-[#D1A054] p-4 flex flex-col min-h-screen shadow">
+        <aside className="w-64 bg-[#D1A054] p-4 flex flex-col min-h-screen shadow text-black">
             {/* Logo */}
-            <div className="px-2 py-4 lg:py-8 text-black">
+            <div className="px-2 py-4 lg:py-8">
                 <h1 className="font-black text-2xl">Tex Restaurant</h1>
             </div>
 
             {/* Menu */}
-            <ul className="gap-1 flex-1 text-black flex flex-col">
+            <ul className="flex flex-col gap-1 flex-1">
                 {adminMenuItems.map((item, index) => (
-                    <li key={index} className="hover:border-b-2 rounded-sm border-white w-fit transition-all duration-100 font-medium uppercase">
+                    <li key={index}>
                         <NavLink
                             to={item.to}
+                            end
                             className={({ isActive }) =>
-                                `flex items-center gap-2 px-2 py-2 rounded-md ${isActive ? " text-white" : ""
-                                }`
+                                `flex items-center gap-2 px-2 py-2 rounded-md font-medium uppercase w-fit transition-colors duration-200
+                                ${isActive ? "text-white" : "text-black hover:text-white"}`
                             }
                         >
                             <item.icon className="h-4 w-4" />
@@ -35,13 +39,29 @@ const SideBar = () => {
                         </NavLink>
                     </li>
                 ))}
+
                 <div className="border-b-2 text-white my-2"></div>
-                <ul className="gap-3 flex-1 text-black flex flex-col uppercase">
-                    <Link to="/"><li className="font-medium px-2 flex items-center gap-2 hover:border-b-2 rounded-sm border-white w-fit transition-all duration-100"><FaHome /> Home</li></Link>
-                    <Link to="/contact"><li className="font-medium px-2 flex items-center gap-2 hover:border-b-2 rounded-sm border-white w-fit transition-all duration-100"><FaFileContract /> Contact</li></Link>
-                    <Link to="/ourshop"><li className="font-medium px-2 flex items-center gap-2 hover:border-b-2 rounded-sm border-white w-fit transition-all duration-100"><FaShop /> Our Shop</li></Link>
-                    <Link to="/ourmenu"><li className="font-medium px-2 flex items-center gap-2 hover:border-b-2 rounded-sm border-white w-fit transition-all duration-100"><FaList /> Menu</li></Link>
-                </ul>
+
+                <li>
+                    <Link to="/" className="flex items-center gap-2 px-2 py-2 rounded-md font-medium uppercase hover:text-white w-fit">
+                        <FaHome /> Home
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/contact" className="flex items-center gap-2 px-2 py-2 rounded-md font-medium uppercase hover:text-white w-fit">
+                        <FaFileContract /> Contact
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/ourshop/salad" className="flex items-center gap-2 px-2 py-2 rounded-md font-medium uppercase hover:text-white w-fit">
+                        <FaShop /> Our Shop
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/ourmenu" className="flex items-center gap-2 px-2 py-2 rounded-md font-medium uppercase hover:text-white w-fit">
+                        <FaList /> Menu
+                    </Link>
+                </li>
             </ul>
 
             {/* Footer */}
