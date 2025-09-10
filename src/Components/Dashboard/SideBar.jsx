@@ -1,10 +1,13 @@
-import { FaBook, FaFileContract, FaHome, FaList, FaShoppingCart, FaUser } from "react-icons/fa";
+import { FaBook, FaCalendar, FaFileContract, FaHome, FaList, FaMoneyBill, FaShoppingCart, FaUser } from "react-icons/fa";
 import { Link, NavLink } from "react-router";
 import { ImSpoonKnife } from "react-icons/im";
 import { FaShop } from "react-icons/fa6";
 import { VscPreview } from "react-icons/vsc";
+import useAdmin from "../../Hooks/useAdmin";
 
 const SideBar = () => {
+    const [isAdmin] = useAdmin();
+
     const adminMenuItems = [
         { to: "/dashboard", icon: FaHome, label: "Admin Home" },
         { to: "/dashboard/add", icon: ImSpoonKnife, label: "Add Items" },
@@ -15,6 +18,17 @@ const SideBar = () => {
         { to: "/dashboard/review", icon: VscPreview, label: "Review" },
     ];
 
+    const userMenuItems = [
+        { to: "/dashboard", icon: FaHome, label: "User Home" },
+        { to: "/dashboard/reservation", icon: FaCalendar, label: "reservation" },
+        { to: "/dashboard/payment", icon: FaMoneyBill, label: "Payment History" },
+        { to: "/dashboard/cart", icon: FaShoppingCart, label: "My Cart" },
+        { to: "/dashboard/review", icon: VscPreview, label: "Review" },
+        { to: "/dashboard/booking", icon: FaBook, label: "My Bookings" },
+    ];
+
+    const menuItems = isAdmin ? adminMenuItems : userMenuItems;
+
     return (
         <aside className="w-64 bg-[#D1A054] p-4 flex flex-col min-h-screen shadow text-black">
             {/* Logo */}
@@ -24,7 +38,7 @@ const SideBar = () => {
 
             {/* Menu */}
             <ul className="flex flex-col gap-1 flex-1">
-                {adminMenuItems.map((item, index) => (
+                {menuItems.map((item, index) => (
                     <li key={index}>
                         <NavLink
                             to={item.to}

@@ -10,6 +10,8 @@ import Dashboard from "../Pages/Dashboard";
 import Cart from "../Pages/Cart";
 import Review from "../Pages/Review";
 import PrivateRoute from "./PrivateRoute";
+import Page_404 from "../Components/Shared/Page_404";
+import Users from "../Pages/Users";
 
 const AppRoutes = () => {
     return (
@@ -22,6 +24,7 @@ const AppRoutes = () => {
                 <Route path="/ourshop" element={<OurShop />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<SignUp />} />
+                <Route path="/*" element={<Page_404 />} />
             </Route>
 
             {/* Protected dashboard routes */}
@@ -36,6 +39,7 @@ const AppRoutes = () => {
                 <Route index element={<Dashboard />} />
                 <Route path="cart" element={<Cart />} />
                 <Route path="review" element={<Review />} />
+                <Route path="users" element={<Users />} />
             </Route>
         </Routes>
     );
