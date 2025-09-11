@@ -14,6 +14,7 @@ import Review from "../Components/Dashboard/Review";
 import Users from "../Components/Dashboard/Users";
 import AddItem from "../Components/Dashboard/AddItem";
 import AdminRoutes from "./AdminRoutes";
+import ManageItem from "../Components/Dashboard/ManageItem";
 
 const AppRoutes = () => {
     return (
@@ -56,6 +57,14 @@ const AppRoutes = () => {
                     element={
                         <AdminRoutes>
                             <AddItem />
+                        </AdminRoutes>
+                    }
+                />
+                <Route
+                    path="manage"
+                    element={
+                        <AdminRoutes>
+                            <ManageItem />
                         </AdminRoutes>
                     }
                 />
