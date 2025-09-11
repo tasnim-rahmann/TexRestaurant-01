@@ -7,11 +7,13 @@ import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import Dashboard from "../Pages/Dashboard";
-import Cart from "../Pages/Cart";
-import Review from "../Pages/Review";
 import PrivateRoute from "./PrivateRoute";
 import Page_404 from "../Components/Shared/Page_404";
-import Users from "../Pages/Users";
+import Cart from "../Components/Dashboard/Cart";
+import Review from "../Components/Dashboard/Review";
+import Users from "../Components/Dashboard/Users";
+import AddItem from "../Components/Dashboard/AddItem";
+import AdminRoutes from "./AdminRoutes";
 
 const AppRoutes = () => {
     return (
@@ -39,7 +41,24 @@ const AppRoutes = () => {
                 <Route index element={<Dashboard />} />
                 <Route path="cart" element={<Cart />} />
                 <Route path="review" element={<Review />} />
-                <Route path="users" element={<Users />} />
+
+                {/* Admin only */}
+                <Route
+                    path="users"
+                    element={
+                        <AdminRoutes>
+                            <Users />
+                        </AdminRoutes>
+                    }
+                />
+                <Route
+                    path="add"
+                    element={
+                        <AdminRoutes>
+                            <AddItem />
+                        </AdminRoutes>
+                    }
+                />
             </Route>
         </Routes>
     );

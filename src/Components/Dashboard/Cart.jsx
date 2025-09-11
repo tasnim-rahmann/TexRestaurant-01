@@ -1,8 +1,8 @@
 import { RiDeleteBin6Line } from "react-icons/ri";
-import SectionTitle from "../Components/Shared/SectionTitle";
-import useCart from "../Hooks/useCart";
+import SectionTitle from "../../Components/Shared/SectionTitle";
+import useCart from "../../Hooks/useCart";
 import Swal from "sweetalert2";
-import apiClient from "../Services/apiClient";
+import apiClient from "../../Services/apiClient";
 
 const Cart = () => {
     const [cart, refetch] = useCart();

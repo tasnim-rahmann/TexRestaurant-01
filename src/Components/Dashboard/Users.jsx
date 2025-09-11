@@ -1,7 +1,7 @@
 import { RiDeleteBin6Line } from "react-icons/ri";
-import SectionTitle from "../Components/Shared/SectionTitle";
+import SectionTitle from "../../Components/Shared/SectionTitle";
 import { useQuery } from "@tanstack/react-query";
-import apiClient from "../Services/apiClient";
+import apiClient from "../../Services/apiClient";
 import { FaUser } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { GrUserAdmin } from "react-icons/gr";
