@@ -21,7 +21,7 @@ const SideBar = () => {
     const userMenuItems = [
         { to: "/dashboard", icon: FaHome, label: "User Home" },
         { to: "/dashboard/reservation", icon: FaCalendar, label: "reservation" },
-        { to: "/dashboard/payment", icon: FaMoneyBill, label: "Payment History" },
+        { to: "/dashboard/history", icon: FaMoneyBill, label: "Payment History" },
         { to: "/dashboard/cart", icon: FaShoppingCart, label: "My Cart" },
         { to: "/dashboard/review", icon: VscPreview, label: "Review" },
         { to: "/dashboard/booking", icon: FaBook, label: "My Bookings" },

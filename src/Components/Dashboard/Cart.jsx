@@ -3,6 +3,7 @@ import SectionTitle from "../../Components/Shared/SectionTitle";
 import useCart from "../../Hooks/useCart";
 import Swal from "sweetalert2";
 import apiClient from "../../Services/apiClient";
+import { Link } from "react-router";
 
 const Cart = () => {
     const [cart, refetch] = useCart();
@@ -42,7 +43,7 @@ const Cart = () => {
                 <div className="flex justify-between items-center uppercase font-bold text-sm lg:text-xl">
                     <p>Total Orders: {cart.length}</p>
                     <p>Total Price: ${totalPrice}</p>
-                    <button className="px-4 py-1 bg-[#D1A054] rounded-sm text-white cursor-pointer">Pay</button>
+                    <button className="px-4 py-1 bg-[#D1A054] rounded-sm text-white cursor-pointer"><Link to="/dashboard/payment">Pay</Link></button>
                 </div>
                 <div className="bg-[#D1A054] flex justify-between text-white text-sm lg:text-xl font-medium uppercase mt-4 lg:mt-6 rounded-t-lg py-4 px-2">
                     <p>Number: </p>

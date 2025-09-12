@@ -21,13 +21,13 @@ const ManageItem = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const res = await axiosSecure.delete(`/menu/${item._id}`);
-                refetch();
                 if (res.data.deletedCount > 0) {
                     Swal.fire({
                         title: "Deleted!",
                         text: "Your file has been deleted.",
                         icon: "success"
                     });
+                    refetch();
                 }
             }
         });

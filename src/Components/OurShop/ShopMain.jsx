@@ -12,12 +12,12 @@ const ShopMain = () => {
     const { category } = useParams();
     const initialIdx = categories.indexOf(category);
     const [tabIdx, setTabIdx] = useState(initialIdx);
-    const { menuItems } = useMenu();
-    const dessert = menuItems.filter(item => item.category === 'dessert');
-    const soup = menuItems.filter(item => item.category === 'soup');
-    const salad = menuItems.filter(item => item.category === 'salad');
-    const pizza = menuItems.filter(item => item.category === 'pizza');
-    const drinks = menuItems.filter(item => item.category === 'drinks');
+    const { menu } = useMenu();
+    const dessert = menu.filter(item => item.category === 'dessert');
+    const soup = menu.filter(item => item.category === 'soup');
+    const salad = menu.filter(item => item.category === 'salad');
+    const pizza = menu.filter(item => item.category === 'pizza');
+    const drinks = menu.filter(item => item.category === 'drinks');
 
     return (
         <div>

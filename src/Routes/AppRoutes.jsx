@@ -15,6 +15,7 @@ import Users from "../Components/Dashboard/Users";
 import AddItem from "../Components/Dashboard/AddItem";
 import AdminRoutes from "./AdminRoutes";
 import ManageItem from "../Components/Dashboard/ManageItem";
+import Payment from "../Components/Dashboard/Payment/Payment";
 
 const AppRoutes = () => {
     return (
@@ -42,6 +43,7 @@ const AppRoutes = () => {
                 <Route index element={<Dashboard />} />
                 <Route path="cart" element={<Cart />} />
                 <Route path="review" element={<Review />} />
+                <Route path="payment" element={<Payment />} />
 
                 {/* Admin only */}
                 <Route
